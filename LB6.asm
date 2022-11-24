@@ -95,7 +95,7 @@ mov BH, 0
 mov CX, 255
 count_s:
 mov BL, CL 
-call my_prnt_func
+call my_prnt_func PASCAL
 cmp AH, num
 jnae skip_print
 mov [out_str+3], AL
@@ -120,10 +120,7 @@ inc AH
 repnz scasb
 jcxz $+4
 jmp begin
-pop cx
-pop di
-pop bx
-jmp [cs:bx]
+ret
 my_prnt_func endp
 
 end
